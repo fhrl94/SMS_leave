@@ -27,4 +27,4 @@ if __name__ == '__main__':
     robot = Robot(conf=conf, logger=logger, stone=stone, apikey=apikey)
     while True:
         robot.run()
-        time.sleep(60*30)
+        time.sleep(60*2)
