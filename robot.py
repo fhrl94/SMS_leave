@@ -76,6 +76,7 @@ class Robot(object):
             and FCreationDateTime > '2017-11-28 10:45:00.000') as twr
             join Wf_biz_DimissionInfo as wbd on twr.FProcessInstID = wbd.ProcessInsID
             where 1 = 1
+            and HRMS_UserField_6 is not Null
             {min_date_query}
             and FCreationDateTime <= DATEADD( minute,-30,GETDATE())
             order by FCreationDateTime desc
@@ -109,6 +110,7 @@ class Robot(object):
                 elif col in ('tel',):
                     # todo 发送给相关负责人，告知手机号码错误
                     # assert len(one[count]) != 11, "手机号码错误"
+                    #  手机获取为NULL，等待还原问题后修复
                     setattr(empinfo, col, one[count])
                 else:
                     setattr(empinfo, col, one[count])
