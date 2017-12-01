@@ -72,7 +72,8 @@ class Robot(object):
         sql = """
             select top 100 FID, FCreationDateTime, FActivityDefName ,wbd.EmployeeName, wbd.HRMS_UserField_6
             from (select top 100 FID, FCreationDateTime, FActivityDefName,FProcessInstID from T_WF_RunAssignment 
-            where FProcessDefName like '%百捷员工离职交接%' and FStatus = 0 and FActivityDefName != '员工关系专员接收' 
+            where FProcessDefName like '%百捷员工离职交接%' and FStatus = 0 and FActivityDefName != '员工关系专员接收'
+            and FActivityDefName != '离职员工' 
             and FCreationDateTime > '2017-11-28 10:45:00.000') as twr
             join Wf_biz_DimissionInfo as wbd on twr.FProcessInstID = wbd.ProcessInsID
             where 1 = 1
